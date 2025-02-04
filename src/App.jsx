@@ -1,21 +1,25 @@
 import FormularioPregunta from './components/formularioPregunta'
 import './App.css'
-import { useState } from 'react'
+import QuestionsProvider from './providers/QuestionsProvider';
+import PreguntasCreadas from './components/preguntasCreadas';
 
 function App() {
-  const [preguntas, setPreguntas] = useState([]);
+  // const [preguntas, setPreguntas] = useState([]);
 
-  const addQuestion = (nueva) => {
-    nueva.id = preguntas.length + 1;
-    setPreguntas([...preguntas, nueva]);
-  }
+  // const addQuestion = (nueva) => {
+  //   nueva.id = preguntas.length + 1;
+  //   setPreguntas([...preguntas, nueva]);
+  // }
 
-  const deleteQuestion = (id) => {
-    setPreguntas(preguntas.filter(p => p.id !== id));
-  }
+  // const deleteQuestion = (id) => {
+  //   setPreguntas(preguntas.filter(p => p.id !== id));
+  // }
 
   return (
-    <FormularioPregunta aniadePregunta={addQuestion} preguntas={preguntas} borrarPregunta={deleteQuestion} />
+    <QuestionsProvider>
+      <FormularioPregunta />
+      <PreguntasCreadas />
+    </QuestionsProvider>
   )
 }
 

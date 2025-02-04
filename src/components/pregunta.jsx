@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
-export default function Pregunta({ pregunta, borrarPregunta }) {
+import { useQuestions } from "../providers/QuestionsProvider";
+export default function Pregunta({ pregunta }) {
+
+    const { deleteQuestion } = useQuestions();
 
     return (
         <div className="card" style={{ width: "18rem" }} >
-            <button type="button" className="align-baseline btn-close " aria-label="Close" onClick={() => borrarPregunta(pregunta.id)}>Borrar</button>
+            <button type="button" className="align-baseline btn-close " aria-label="Close" onClick={() => deleteQuestion(pregunta.id)}>Borrar</button>
             <div className="card-body">
                 <h5 className="card-title">Pregunta nº{pregunta.id}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{pregunta.enunciado}</h6>
